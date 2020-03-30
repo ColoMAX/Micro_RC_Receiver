@@ -4,7 +4,7 @@
 
 #include "Arduino.h"
 
-#define CONFIG_SERIAL_TEST // <- Select the correct vehicle configuration here before uploading!
+#define CONFIG_GENERIC_V10 // <- Select the correct vehicle configuration here before uploading!
 
 //
 // =======================================================================================================

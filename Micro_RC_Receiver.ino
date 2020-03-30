@@ -41,6 +41,8 @@ const float codeVersion = 3.32; // Software revision (see https://github.com/The
 #include "balancing.h"
 #include "helper.h"
 
+#define DEBUG
+
 //
 // =======================================================================================================
 // PIN ASSIGNMENTS & GLOBAL VARIABLES
@@ -48,7 +50,7 @@ const float codeVersion = 3.32; // Software revision (see https://github.com/The
 //
 
 // Radio channels (126 channels are supported)
-byte chPointer = 0; // Channel 1 (the first entry of the array) is active by default
+byte chPointer = 3; // Channel 1 (the first entry of the array) is active by default
 const byte NRFchannel[] {
   1, 2
 };
@@ -62,7 +64,7 @@ const uint64_t pipeIn[] = {
 const int maxVehicleNumber = (sizeof(pipeIn) / (sizeof(uint64_t)));
 
 // Hardware configuration: Set up nRF24L01 radio on hardware SPI bus & pins 8 (CE) & 7 (CSN)
-RF24 radio(8, 7);
+RF24 radio(7, 8);
 
 // The size of this struct should not exceed 32 bytes
 struct RcData {
@@ -148,6 +150,7 @@ void setupRadio() {
 
 #ifdef DEBUG
   radio.printDetails();
+  Serial.println(chPointer);
   delay(3000);
 #endif
 
